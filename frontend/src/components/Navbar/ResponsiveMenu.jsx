@@ -6,7 +6,7 @@ const ResponsiveMenu = ({ showMenu }) => {
     <div
       className={`${
         showMenu ? "left-0" : "left-[-100%]"
-      } fixed bottom-0 top-0 w-[75%] transition-all duration-300 pt-16 px-8 bg-white z-50}`}
+      } fixed bottom-0 top-0 w-[75%] transition-all duration-300 pt-16 px-8 bg-white z-[100]}`}
     >
       <div className="card">
         {/* Menu section */}
