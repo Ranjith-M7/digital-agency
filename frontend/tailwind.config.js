@@ -4,10 +4,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        sans: ["Poppins", "sans-serif"], // This is your body text font
+        heading: ["Overpass", "sans-serif"], // This is your new headline font
       },
       colors: {
         primary: "#6153CD",
+        "brand-red": "#E53935",
+        "brand-light-red": "#FFCCCC",
       },
       container: {
         center: true,

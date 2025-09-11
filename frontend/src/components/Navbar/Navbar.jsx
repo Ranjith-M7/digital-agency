@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import Logo from "../../assets/website/logo.png";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { Link } from "react-router-dom";
 
 export const MenuLinks = [
   {
     id: 1,
-    name: "About",
-    link: "/#about",
+    name: "Home",
+    link: "/",
   },
   {
     id: 2,
-    name: "Services",
-    link: "/#services",
+    name: "About",
+    link: "/about",
   },
   {
     id: 3,
+    name: "Services",
+    link: "/services",
+  },
+  {
+    id: 4,
     name: "Projects",
-    link: "/#projects",
+    link: "/projects",
   },
 ];
 
@@ -34,12 +40,12 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Logo section */}
             <div>
-              <a href="#" className="flex items-center gap-3">
+              <Link to="/" className="flex items-center gap-3">
                 <img src={Logo} alt="Logo" className="w-10" />
-                <span className="text-2xl sm:text-3xl font-semibold">
-                  Digital Agency
+                <span className="text-2xl sm:text-3xl font-semibold text-red-600">
+                  HUB Creations
                 </span>
-              </a>
+              </Link>
             </div>
             {/* Desktop NavLinks Section */}
             <div className="hidden md:block">
@@ -47,16 +53,20 @@ const Navbar = () => {
                 {MenuLinks.map(({ id, name, link }) => {
                   return (
                     <li key={id} className="cursor-pointer py-4">
-                      <a
-                        href="#"
-                        className="text-lg font-medium hover:text-primary py-2 hover:border-b-2 hover:border-primary transition-all duration-300"
+                      <Link
+                        to={link}
+                        className="text-lg font-medium text-black hover:text-red-500 py-2 transition-all duration-500"
                       >
                         {name}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
-                <button className="btn-primary">Get in Touch</button>
+                <Link to="/contact">
+                  <button className="btn-primary bg-red-600 text-white hover:bg-red-700">
+                    Contact Us
+                  </button>
+                </Link>
               </ul>
             </div>
             {/* Mobile view */}
@@ -64,12 +74,12 @@ const Navbar = () => {
               {showMenu ? (
                 <HiMenuAlt1
                   onClick={toggleMenu}
-                  className="cursor-pointer text-2xl"
+                  className="cursor-pointer text-2xl text-red-600"
                 />
               ) : (
                 <HiMenuAlt3
                   onClick={toggleMenu}
-                  className="cursor-pointer text-2xl"
+                  className="cursor-pointer text-2xl text-red-600"
                 />
               )}
             </div>

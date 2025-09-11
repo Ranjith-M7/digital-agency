@@ -14,15 +14,12 @@ const Hero = () => {
                 className="aspect-video object-cover w-full h-full rounded-3xl "
                 alt=""
               />
-              {/* <div className="bg-white px-4 py-2 rounded-xl shadow-md absolute-bottom-5-right-8">
-                        <p></p>
-                    </div> */}
             </div>
             {/* Text Content section */}
-            <div className="space-y-5 order-2 sm:order-1 xl:pr-40">
-              <h1 className="text-4xl sm:text-5xl font-semibold">
+            <div className="space-y-5 order-2 sm:order-1 xl:pr-40 mb-10">
+              <h1 className="text-4xl sm:text-5xl font-semibold font-heading">
                 Building Brands in the{" "}
-                <span className="text-primary">Digital Agency</span>
+                <span className="text-red-500">Digital Marketing Agency</span>
               </h1>
               <p>
                 Elevate your brand with our expert digital marketing strategies.
@@ -30,7 +27,9 @@ const Hero = () => {
                 turning clicks into customers. Let's build your online success
                 story together, one campaign at a time.
               </p>
-              <button className="primary-btn">Get Started</button>
+              <button className="bg-red-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-600 transition-all duration-300">
+                Get Started
+              </button>
             </div>
           </div>
         </div>
