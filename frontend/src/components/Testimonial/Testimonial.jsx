@@ -1,15 +1,20 @@
 "use client";
 
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+// Import required Swiper modules
+import { Pagination, Autoplay } from "swiper/modules";
+
+// Import your assets
 import partylah from "../../assets/Testimonial/partylah.jpg";
 import kubes from "../../assets/Testimonial/kubes.jpg";
 import kamala from "../../assets/Testimonial/kamala.jpg";
 import casurina from "../../assets/Testimonial/casurina.jpg";
-
 import quote from "../../assets/icons/quote.svg";
 
 const testimonials = [
@@ -28,7 +33,7 @@ const testimonials = [
     name: "Partylah",
     location: "Singapore",
     comment:
-      "They completely transformed our brand's online presence and more. The event campaign they ran was a huge success, leading to a sold-out launch night!",
+      "They completely transformed our brand's online presence. The event campaign they ran was a huge success, leading to a sold-out launch night and more!",
     rating: 5,
     image: partylah,
     starColor: "text-yellow-500",
@@ -55,83 +60,90 @@ const testimonials = [
   },
 ];
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  arrows: false,
-  slidesToShow: 3, // Default for large screens (1280px and up)
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1279, // For desktops
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 1024, // For tablets
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 640, // For mobile
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
 const Testimonials = () => {
   return (
-    <>
-      <div className="container mx-auto px-4 py-12">
-        {/* Header section */}
-        <div className="pb-12 text-center space-y-3">
-          <p>Testimonial</p>
-          <h1 className="text-3xl font-semibold font-heading">
-            What{" "}
-            <span className="font-light text-red-500"> Our Clients Say</span>
-          </h1>
-        </div>
-        {/* Testimonial section */}
-        <Slider {...settings}>
-          {testimonials.map((card) => (
-            <div key={card.id} className="px-4">
+    <div className="container mx-auto px-4 py-12">
+      {/* Header section */}
+      <div className="pb-12 text-center space-y-3">
+        <p>Testimonial</p>
+        <h1 className="text-3xl font-semibold font-heading">
+          What <span className="font-light text-red-500">Clients Say</span>
+        </h1>
+      </div>
+      {/* Testimonial slider */}
+      <Swiper
+        loop={true}
+        speed={500}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination]}
+        slidesPerView={1}
+        spaceBetween={16} // Adds space between slides
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 32,
+          },
+        }}
+      >
+        {testimonials.map((card) => (
+          <SwiperSlide key={card.id}>
+            <div className="p-8 rounded-2xl bg-white shadow-md flex flex-col items-center justify-center h-full">
               {" "}
-              {/* Added px-4 for horizontal spacing */}
-              <div className="p-8 rounded-lg bg-gray-100 shadow-md flex flex-col items-center justify-center h-full">
-                {" "}
-                {/* h-full for equal height */}
-                <img src={quote} alt="Quote icon" className="w-10 h-10 mb-4" />
-                <p className="text-base text-gray-600 text-center mt-6 mb-8">
-                  "{card.comment}"
-                </p>
-                <img
-                  src={card.image}
-                  className="rounded-full mb-4 w-20 h-20 object-cover"
-                  alt={`Profile of ${card.name}`}
-                />
-                <h3 className="text-center text-lg text-black">
-                  {card.name}
-                  <br />
-                  <small className="text-red-500 font-medium text-sm">
-                    {card.location}
-                  </small>
-                </h3>
+              {/* Changed bg-gray-100 to bg-white */}
+              <img src={quote} alt="Quote icon" className="w-10 h-10 mb-4" />
+              
+              <p className="text-base text-gray-600 text-center mt-6 mb-8">
+                "{card.comment}"
+              </p>
+              <img
+                src={card.image}
+                className="rounded-full mb-4 w-20 h-20 object-cover"
+                alt={`Profile of ${card.name}`}
+              />
+              <h3 className="text-center text-lg text-black">
+                {card.name}
+                <br />
+                <small className="text-red-500 font-medium text-sm">
+                  {card.location}
+                </small>
+              </h3>
+              {/* Stars for rating - placed above the quote */}
+              <div className={`flex justify-center mb-4 ${card.starColor}`}>
+                {[...Array(5)].map(
+                  (
+                    _,
+                    i // Always render 5 stars
+                  ) => (
+                    <span
+                      key={i}
+                      className={`text-xl ${
+                        i < card.rating ? card.starColor : "text-gray-300"
+                      }`}
+                    >
+                      ★
+                    </span>
+                  )
+                )}
               </div>
             </div>
-          ))}
-        </Slider>
-      </div>
-    </>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

@@ -84,7 +84,7 @@ const Contact = () => {
                   href="mailto:contact@youragency.com"
                   className="text-sm sm:text-base text-gray-600 hover:text-brand-red transition-colors duration-200"
                 >
-                  contact@youragency.com
+                  contact@hubcreation.com
                 </a>
               </div>
             </li>
@@ -100,7 +100,7 @@ const Contact = () => {
                   Address
                 </p>
                 <p className="text-sm sm:text-base text-gray-600">
-                  123 Digital Drive, Suite 456, New York, NY 10001
+                  123 Digital Drive, Suite 456, Singapore
                 </p>
               </div>
             </li>

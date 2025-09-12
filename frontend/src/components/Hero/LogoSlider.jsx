@@ -1,11 +1,14 @@
 "use client";
 
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// Import Swiper React components and modules
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
-// logo images here
+// Import Swiper styles
+import "swiper/css";
+
+// Import your logo images here
 import logoPartylah from "../../assets/Testimonial/partylah.jpg";
 import logoKubes from "../../assets/Testimonial/kubes.jpg";
 import logoKamala from "../../assets/Testimonial/kamala.jpg";
@@ -20,38 +23,6 @@ const logos = [
   { id: 6, src: logoKamala, alt: "BFC logo" },
 ];
 
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 2000,
-  slidesToShow: 6,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 0,
-  cssEase: "linear",
-  arrows: false,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 4,
-      },
-    },
-    {
-      breakpoint: 640,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-  ],
-};
-
 const LogoSlider = () => {
   return (
     <div className="bg-gray-100 py-16">
@@ -59,17 +30,45 @@ const LogoSlider = () => {
         <h2 className="text-xl md:text-2xl text-gray-700 font-semibold mb-12">
           A few of the other companies we helped grow
         </h2>
-        <Slider {...settings}>
+        <Swiper
+          loop={true}
+          speed={3000}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            reverseDirection: false, // Set to true for right-to-left scroll
+          }}
+          modules={[Autoplay]}
+          slidesPerView={6}
+          spaceBetween={16}
+          breakpoints={{
+            1024: {
+              slidesPerView: 4,
+            },
+            640: {
+              slidesPerView: 3,
+            },
+            480: {
+              slidesPerView: 2,
+            },
+            375: {
+              slidesPerView: 2,
+            },
+          }}
+          className="logo-slider"
+        >
           {logos.map((logo) => (
-            <div key={logo.id} className="logo-slide px-4">
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="mx-auto h-14 md:h-18 lg:h-20 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 rounded-full"
-              />
-            </div>
+            <SwiperSlide key={logo.id}>
+              <div className="logo-slide px-4">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="mx-auto h-14 md:h-18 lg:h-20 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 rounded-full"
+                />
+              </div>
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
       </div>
     </div>
   );

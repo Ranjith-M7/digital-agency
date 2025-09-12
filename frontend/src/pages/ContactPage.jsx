@@ -3,9 +3,9 @@ import Contact from "../components/Contact/Contact";
 
 const ContactPage = () => {
   return (
-    <>
+    <div className="pt-20">
       <Contact />
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import HeroImg from "../../assets/website/team.png";
-
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <>
@@ -27,9 +27,11 @@ const Hero = () => {
                 turning clicks into customers. Let's build your online success
                 story together, one campaign at a time.
               </p>
-              <button className="bg-red-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-600 transition-all duration-300">
-                Get Started
-              </button>
+              <Link to="/contact">
+                <button className="mt-6 bg-red-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-600 transition-all duration-300">
+                  Get Started
+                </button>
+              </Link>
             </div>
           </div>
         </div>
